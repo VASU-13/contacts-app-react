@@ -67,7 +67,7 @@ class MainComponent extends Component{
       })
 
     }))
-    fetch('https://contactsapp-rest-api.herokuapp.com/users' + contact._id, {
+    fetch('https://contactsapp-rest-api.herokuapp.com/users/' + contact._id, {
       method: 'DELETE',
       
     })
