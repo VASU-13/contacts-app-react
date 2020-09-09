@@ -44,7 +44,9 @@ class MainComponent extends Component{
   
   getContactList() {
 
-    axios.get('https://contactsapp-rest-api.herokuapp.com/users', {
+    const apiUrl = process.env.REACT_APP_API_URL
+
+    axios.get(apiUrl, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -59,7 +61,7 @@ class MainComponent extends Component{
 
   removeContact = (contact) => {
 
-    
+    const apiUrl = process.env.REACT_APP_API_URL
     this.setState((currentState) => ({
       contacts: currentState.contacts.filter((c) => {
         return c._id !== contact._id
@@ -67,7 +69,7 @@ class MainComponent extends Component{
       })
 
     }))
-    fetch('https://contactsapp-rest-api.herokuapp.com/users/' + contact._id, {
+    fetch(apiUrl + "/" + contact._id, {
       method: 'DELETE',
       
     })
@@ -92,6 +94,7 @@ class MainComponent extends Component{
  
   CreateContact = (contact,url,history) => {
 
+    const apiUrl = process.env.REACT_APP_API_URL
    
 
     const pp={
@@ -101,7 +104,7 @@ class MainComponent extends Component{
     
 
 
-    axios.post('https://contactsapp-rest-api.herokuapp.com/users', all , {
+    axios.post(apiUrl, all , {
       headers: {
         'Content-Type': 'application/json',
         
